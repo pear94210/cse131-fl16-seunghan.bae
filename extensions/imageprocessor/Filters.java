@@ -44,54 +44,59 @@ public class Filters {
 	 *the first source image to the target panel.  
 	 *(Hint: This is a very simple method.)**/
 	public static int copy(int pixelComponent) {
-		return 0;  // FIXME
+		return pixelComponent;
 	}
 
 	//This method averages the color components of two pixels.
 	// USED IN: composite
 	public static int composite(int a, int b) {
-		return 0;  // FIXME
+		return (a + b) / 2;
 	}
 
 	//This method returns the negative of a pixel by inverting its color components.
 	// USED IN: negative
 	public static int negative(int a) {
-		return 0;  // FIXME
+		return (255 - a);
 	}
 
 	//This method reduces the number of possible values for a given color component
 	//from 256 to 2, by returning either 0 or 255 based on the original value.
 	// USED IN: posterize
 	public static int posterize(int a) {
-		return 0;   // FIXME
+		return (a / 128 == 1) ? 255 : 0;
 	}
 
 	//This method returns a color that is brighter than the original color.
 	// USED IN: brighter
 	//FIX ME
 	public static Color brighter(Color c) {
-		return Color.black;  // FIXME
+		return c.brighter();
 	}
 
 	//This method returns a color that is some shade of gray, by making a new
 	//color having equal RGB components. returns an array of integers [r, g ,b].
 	// USED IN: grayscale
 	public static Color grayscale(Color c) {
-		return Color.black;  // FIXME
+		int grey = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
+		Color g = new Color(grey, grey, grey);
+		return g;
 	}
 
 	//This method returns either black or white, based on the intensity of the
 	//originally provided color. returns an array of integers [r, g ,b].
 	// USED IN: blackWhite
 	public static Color blackAndWhite(Color c) {
-		return Color.black;   // FIXME
+		int intensity = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
+		return (intensity >= 128) ? Color.WHITE : Color.BLACK;
 	}
 
 	//This method combines two images by choosing for each location the brighter 
 	//pixel in the same location from the two source images.
 	// USED IN: combineBrighter
 	public static Color combineBrighter(Color c1, Color c2) {
-		return Color.black;  // FIXME
+		int c1Bright = c1.getRed() + c1.getGreen() + c1.getBlue();
+		int c2Bright = c2.getRed() + c2.getGreen() + c2.getBlue();
+		return (c1Bright >= c2Bright) ? c1 : c2;
 
 
 	}
