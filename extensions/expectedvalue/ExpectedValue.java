@@ -2,7 +2,7 @@ package expectedvalue;
 
 import cse131.ArgsProcessor;
 
-public class Unexpected {
+public class ExpectedValue {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
