@@ -44,7 +44,7 @@ public class Filters {
 	 *the first source image to the target panel.  
 	 *(Hint: This is a very simple method.)**/
 	public static int copy(int pixelComponent) {
-		return 0;  // FIXME
+		return pixelComponent;  // FIXME
 	}
 
 	//This method averages the color components of two pixels.
