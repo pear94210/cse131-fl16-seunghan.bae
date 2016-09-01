@@ -8,12 +8,12 @@ public class Average {
 		// TODO Auto-generated method stub
 		ArgsProcessor ap = new ArgsProcessor(args);
 		
-		int n1 = ap.nextInt("First integer?");
-		int n2 = ap.nextInt("Second integer?");
+		int n1 = ap.nextInt("First integer");
+		int n2 = ap.nextInt("Second integer");
 		
 		double avg = (n1 + n2) / 2d;
 		
-		System.out.println("Average of " + n1 + " and " + n2 + " is " + avg + ".");
+		System.out.println("Average of " + n1 + " and " + n2 + " is " + avg);
 	}
 
 }
