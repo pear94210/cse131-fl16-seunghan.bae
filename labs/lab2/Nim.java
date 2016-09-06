@@ -32,7 +32,10 @@ public class Nim {
 		}
 		
 		while (begSticks > 0) {
-			int computerDraw = (Math.random() < 0.5) ? 1 : 2;
+			int computerDraw;
+			
+			if (begSticks == 1) computerDraw = 1;
+			else computerDraw = (Math.random() < 0.5) ? 1 : 2;
 			
 			sticks = begSticks - computerDraw;
 			
