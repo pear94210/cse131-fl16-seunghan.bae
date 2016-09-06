@@ -26,11 +26,12 @@ public class BadSwap {
 		//
 		// Your answer:
 		//
-		//
-		//
-		//
-		//
-		//
+		// When we say "x = y;"
+		// the value that x contains is switched to the value of y.
+		// Then when we say "y = x;"
+		// the original value of x is already gone
+		// and the value y gets is the value that x has instead,
+		// which is the value of y.
 
 	}
 
