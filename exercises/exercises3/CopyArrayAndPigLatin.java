@@ -15,7 +15,7 @@ public class CopyArrayAndPigLatin {
 		
 		for (int i = 0; i < names.length; i++) {
 			copy[i] = names[i];
-			System.out.print(copy[i] + "ay ");
+			System.out.println(copy[i] + "ay");
 		}
 		
 		// 

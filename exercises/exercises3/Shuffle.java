@@ -3,9 +3,7 @@ package exercises3;
 public class Shuffle {
 
 	public static void main(String[] args) {
-		String[] original = { "A", "B", "C", "D",
-				"E", "F", "G", "H"
-		};
+		String[] original = { "A", "B", "C", "D", "E", "F", "G", "H"};
 
 		// print out original array
 		for (int i=0; i < original.length; ++i) {
@@ -19,6 +17,8 @@ public class Shuffle {
 		// shuffled array contains the same strings, but in a randomized
 		// order.
 		//
+		
+		int shuffle = (int) (Math.random() * 8);
 
 	}
 	
