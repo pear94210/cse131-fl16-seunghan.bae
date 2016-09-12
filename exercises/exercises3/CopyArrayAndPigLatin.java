@@ -11,6 +11,12 @@ public class CopyArrayAndPigLatin {
 		//     String[] copy = { names[0], names[1], names[2] };
 		//
 		
+		String[] copy = new String[names.length];
+		
+		for (int i = 0; i < names.length; i++) {
+			copy[i] = names[i];
+			System.out.print(copy[i] + "ay ");
+		}
 		
 		// 
 		// Follow the instructions on the web page to check
