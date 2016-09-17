@@ -54,11 +54,13 @@ public class FindTheFrame {
 		// Below, define each of the three Stop Codons as a separate array of char,
 		//     named ochre, amber, and opal
 		//     See http://en.wikipedia.org/wiki/Genetic_code#Start.2Fstop_codons
-
-		
+		char[] ochre = {'T', 'A', 'G'};
+		char[] amber = {'T', 'A', 'A'};
+		char[] opal = {'T', 'G', 'A'};				
 		
 		// Below, define the Start Codon (Methionine) as an array of char
 		//Start Codon
+		char[] methionine = {'A', 'T', 'G'};
 		
 		int ans = -1;  // returned if no appropriate sequences was found
 		

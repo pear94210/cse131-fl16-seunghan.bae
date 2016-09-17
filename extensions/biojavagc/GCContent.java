@@ -64,7 +64,14 @@ public class GCContent {
 	public static double percentGC(char[] seq) {
 		double ans = 0.0;
 		// FIXME set ans to the percentage of GC in seq
-		//
+		if (seq.length != 0) {
+			for (int i = 0; i < seq.length; i++) {
+				if (seq[i] == 'G' || seq[i] == 'C') ans++;
+			}
+			
+			ans = 100 * ans / seq.length;
+		}
+		
 		return ans;
 	}
 
