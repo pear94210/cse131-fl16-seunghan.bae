@@ -56,13 +56,23 @@ public class FindTheFrame {
 		//     See http://en.wikipedia.org/wiki/Genetic_code#Start.2Fstop_codons
 		char[] ochre = {'T', 'A', 'G'};
 		char[] amber = {'T', 'A', 'A'};
-		char[] opal = {'T', 'G', 'A'};				
+		char[] opal = {'T', 'G', 'A'};
+		
+		int ochreLength;
+		int amberLength;
+		int opalLength;
 		
 		// Below, define the Start Codon (Methionine) as an array of char
 		//Start Codon
 		char[] methionine = {'A', 'T', 'G'};
 		
 		int ans = -1;  // returned if no appropriate sequences was found
+		
+		int startPoint = 0;
+		
+		for (int i = 0; i < dna.length; i++) {
+			if (dna[i] == methionine[0] && dna[i + 1] == methionine[1] && dna[i + 2] == methionine[2]) startPoint = i;
+		}
 		
 		//
 		// Follow the instructions in the extension write up
