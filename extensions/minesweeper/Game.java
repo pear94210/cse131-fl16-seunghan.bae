@@ -1,7 +1,8 @@
-package lab3;
+package minesweeper;
 
 import java.io.PrintStream;
 
+import lab3.Model;
 import lab3.viz.Controller;
 import lab3.viz.StreamToBoardAdapter;
 
