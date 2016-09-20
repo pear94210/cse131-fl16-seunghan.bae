@@ -47,7 +47,7 @@ public class Dice {
 		System.out.println();
 		System.out.println("# of throws with the sum...");
 		for (int m = 0; m < sumStat.length; m++) {
-			if (sumStat[m] != 0) System.out.println((m + 1) + ": " + sumStat[m]);
+			if (sumStat[m] != 0) System.out.println((m + 1) + ": " + sumStat[m] + " (" + (Math.round(10000.0 * sumStat[m] / time) / 100.0) + "%)");
 		}
 	}
 
