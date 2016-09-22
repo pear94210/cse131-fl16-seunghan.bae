@@ -51,11 +51,11 @@ public class BumpingBalls {
 					
 				for (int k = 0; k < N; k++) {
 					StdDraw.setPenColor(StdDraw.MAGENTA);
-					//StdDraw.filledCircle(ball[0][k], ball[1][k], 0.05);
-					StdDraw.picture(ball[0][k], ball[1][k], "images/chicken.jpg", 0.1, 0.1);
+					StdDraw.filledCircle(ball[0][k], ball[1][k], 0.05);
+					//StdDraw.picture(ball[0][k], ball[1][k], "images/chicken.jpg", 0.1, 0.1);
 				}
 		            
-		        StdDraw.pause(50);
+		        StdDraw.pause(100);
 			}
 			
 			while (StdDraw.mousePressed()) StdDraw.pause(100);
