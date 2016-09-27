@@ -22,8 +22,8 @@ public class BumpingBalls {
 			for (int j = 0; j < N; j++) {
 				ball[0][j] = (Math.random() * 1.9) - 0.95;
 				ball[1][j] = (Math.random() * 1.9) - 0.95;
-				ball[2][j] = (Math.random() * 0.2) + 0.1;
-				ball[3][j] = (Math.random() * 0.2) + 0.1;
+				ball[2][j] = (Math.random() * 0.15) + 0.1;
+				ball[3][j] = (Math.random() * 0.15) + 0.1;
 			}
 			
 			while (!StdDraw.mousePressed()) {
