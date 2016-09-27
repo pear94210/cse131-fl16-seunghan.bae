@@ -22,8 +22,8 @@ public class BumpingBalls {
 			for (int j = 0; j < N; j++) {
 				ball[0][j] = (Math.random() * 1.9) - 0.95;
 				ball[1][j] = (Math.random() * 1.9) - 0.95;
-				ball[2][j] = (Math.random() * 0.15) + 0.1;
-				ball[3][j] = (Math.random() * 0.15) + 0.1;
+				ball[2][j] = (Math.random() * 0.10) + 0.1;
+				ball[3][j] = (Math.random() * 0.10) + 0.1;
 			}
 			
 			while (!StdDraw.mousePressed()) {
@@ -37,6 +37,7 @@ public class BumpingBalls {
 		            		ball[3][j] = -ball[3][j];
 		            		ball[2][k] = -ball[2][k];
 		            		ball[3][k] = -ball[3][k];
+		            		StdAudio.play("music/boing.wav");
 		            	}
 		            }
 				}
@@ -51,11 +52,11 @@ public class BumpingBalls {
 					
 				for (int k = 0; k < N; k++) {
 					StdDraw.setPenColor(StdDraw.MAGENTA);
-					StdDraw.filledCircle(ball[0][k], ball[1][k], 0.05);
-					//StdDraw.picture(ball[0][k], ball[1][k], "images/chicken.jpg", 0.1, 0.1);
+					//StdDraw.filledCircle(ball[0][k], ball[1][k], 0.05);
+					StdDraw.picture(ball[0][k], ball[1][k], "images/chicken.jpg", 0.1, 0.1);
 				}
 		            
-		        StdDraw.pause(100);
+		        StdDraw.pause(50);
 			}
 			
 			while (StdDraw.mousePressed()) StdDraw.pause(100);
