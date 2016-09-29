@@ -1,8 +1,8 @@
-package exercises4;
+package exam1;
 
 import cse131.ArgsProcessor;
 
-public class Exam1 {
+public class Spring2016Exam1 {
 
 	public static void main(String[] args) {
 		
@@ -42,7 +42,6 @@ public class Exam1 {
 		if (((a > b) && (b > c)) || ((a < b) && (b < c))) System.out.println(true);
 		else System.out.println(false);
 		
-		
 		//2(b)
 		System.out.println();
 		
@@ -66,7 +65,6 @@ public class Exam1 {
 		double[] prices = {1.25, 3.50, 8.00, 2.75, 10.15};
 		
 		int C = names.length;
-		System.out.println("C is " + C);
 		
 		int N2 = ap.nextInt("How many people will be at the party?");
 		double B = ap.nextInt("What is your budget?");
