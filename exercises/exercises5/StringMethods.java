@@ -13,7 +13,33 @@ public class StringMethods {
 	//
 	
 	public static String selfConcat(String s) {
-		return s + s;
+		return nConcat(s, 2);
+	}
+	
+	public static String nConcat(String s, int n) {
+		if (n == 0) return "";
+		
+		else {
+			String[] target = new String[n];
+			
+			for (int i = 0; i < target.length; i++) {
+				target[i] = s;
+			}
+			
+			String concat = join(target, "");
+			
+			return concat;
+		}
+	}
+	
+	public static String join(String[] array, String joiner) {
+		String ans = array[0];
+		
+		for (int i = 1; i < array.length; i++) {
+			ans = ans + joiner + array[i];
+		}
+		
+		return ans;
 	}
 	
 	public static void main(String[] args) {
@@ -22,6 +48,15 @@ public class StringMethods {
 		// Testing the methods
 		//
 		System.out.println(selfConcat("echo"));
+		System.out.println(nConcat("bye", 5));
+		
+		String s = "Nice to meet you";
+		String[] words = s.split(" ");
+		for (int i = 0; i < words.length; i++) {
+			System.out.println(words[i]);
+		}
+		
+		System.out.println(join(words, " "));
 	}
 
 }
