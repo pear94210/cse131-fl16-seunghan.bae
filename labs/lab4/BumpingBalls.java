@@ -37,7 +37,7 @@ public class BumpingBalls {
 		            		ball[3][j] = -ball[3][j];
 		            		ball[2][k] = -ball[2][k];
 		            		ball[3][k] = -ball[3][k];
-		            		StdAudio.play("music/boing.wav");
+		            		StdAudio.play("sound/boing.wav");
 		            	}
 		            }
 				}
