@@ -15,14 +15,18 @@ public class MethodsTest {
 		//
 		// Try something fancier
 		//
-		for (int i=0; i < 10; ++i) {
+		for (int i = 0; i < 10; ++i) {
 			assertEquals(i+i, Methods.sum(i, i));
+		}
+		
+		for (int j = 0; j < 10; j++) {
+			assertEquals((-j) + (-j), Methods.sum(-j,  -j));
 		}
 	}
 	
 	@Test
 	public void thisTestShouldFail() {
-		assertEquals(1, Methods.mpy(0,3));
+		assertEquals(1, Methods.mpy(0, 3));
 		assertEquals(1, Methods.mpy(2, 5));
 	}
 	
@@ -34,7 +38,7 @@ public class MethodsTest {
 	
 	@Test
 	public void testArraySum() {
-		assertEquals(6.0, Methods.sumArray(new double[] { 1, 2, 3}), 0.1);
+		assertEquals(6.0, Methods.sumArray(new double[] {1, 2, 3}), 0.1);
 	}
 	
 	@Test
@@ -44,7 +48,12 @@ public class MethodsTest {
 	
 	@Test
 	public void testAverage() {
-		assertEquals(0.5, Methods.average(new double[] { 0, 1 }), 0.1);
+		assertEquals(0.5, Methods.average(new double[] {0, 1}), 0.1);
+	}
+	
+	@Test
+	public void testArrayProduct() {
+		assertEquals(6.0, Methods.productArray(new double[] {1, 2, 3}), 0.1);
 	}
 
 }
