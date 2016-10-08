@@ -12,7 +12,11 @@ public class TicTacToe  {
 	 * @return a 3x3 String[][] array with each element set to a single blank string (" ").
 	 */
 	public static String[][] genBoard() {
-		return null; // FIXME
+		String[][] board = new String[3][3];
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) board[i][j] = " ";
+		}
+		return board;
 	}
 
 	/**
@@ -34,7 +38,8 @@ public class TicTacToe  {
 	 * @param row should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidRow(int row) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if (row >= 0 && row <= 2) return;
+		else throw new IllegalArgumentException("Row should be between 0 and 2, inclusively");
 	}
 
 	/**
@@ -42,7 +47,8 @@ public class TicTacToe  {
 	 * @param col should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidCol(int col) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if (col >= 0 && col <= 2) return;
+		else throw new IllegalArgumentException("Col should be between 0 and 2, inclusively");
 	}
 
 
@@ -85,8 +91,11 @@ public class TicTacToe  {
 		verifyValidRow(row);
 		verifyValidCol(col);
 		
-		
-		return false; // FIXME
+		if (board[row][col] != " ") return false;
+		else {
+			board[row][col] = player;
+			return true;
+		}
 	}
 
 	/**
@@ -95,7 +104,16 @@ public class TicTacToe  {
 	 * @return true iff the board is full
 	 */
 	public static boolean boardFull(String[][] board) {
-		return true; // FIXME
+		int correctCount = 0;
+		
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (board[i][j] != " ") correctCount++;
+			}
+		}
+		
+		if (correctCount == 9) return true;
+		else return false;
 	}
 
 	/**
@@ -108,7 +126,15 @@ public class TicTacToe  {
 	public static boolean winFor(String player, String[][] board) {
 		verifyValidPlayer(player);
 		
-		return true; // FIXME
+		if (board[0][0] == board[0][1] && board[0][1] == board[0][2]) return true;
+		else if (board[1][0] == board[1][1] && board[1][1] == board[1][2]) return true;
+		else if (board[2][0] == board[2][1] && board[2][1] == board[2][2]) return true;
+		else if (board[0][0] == board[1][0] && board[1][0] == board[2][0]) return true;
+		else if (board[0][1] == board[1][1] && board[1][1] == board[2][1]) return true;
+		else if (board[0][2] == board[1][2] && board[1][2] == board[2][2]) return true;
+		else if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) return true;
+		else if (board[2][0] == board[1][1] && board[1][1] == board[0][2]) return true;
+		else return false;
 	}
 
 }
