@@ -22,8 +22,8 @@ public class BumpingBalls {
 			for (int j = 0; j < N; j++) {
 				ball[0][j] = (Math.random() * 1.9) - 0.95;
 				ball[1][j] = (Math.random() * 1.9) - 0.95;
-				ball[2][j] = (Math.random() * 0.10) + 0.1;
-				ball[3][j] = (Math.random() * 0.10) + 0.1;
+				ball[2][j] = (Math.random() * 0.02) + 0.05;
+				ball[3][j] = (Math.random() * 0.02) + 0.05;
 			}
 			
 			while (!StdDraw.mousePressed()) {
@@ -37,7 +37,7 @@ public class BumpingBalls {
 		            		ball[3][j] = -ball[3][j];
 		            		ball[2][k] = -ball[2][k];
 		            		ball[3][k] = -ball[3][k];
-		            		StdAudio.play("sound/boing.wav");
+		            		StdAudio.play("sound/boing.au");
 		            	}
 		            }
 				}
@@ -56,7 +56,7 @@ public class BumpingBalls {
 					StdDraw.picture(ball[0][k], ball[1][k], "images/chicken.jpg", 0.1, 0.1);
 				}
 		            
-		        StdDraw.pause(50);
+		        StdDraw.pause(25);
 			}
 			
 			while (StdDraw.mousePressed()) StdDraw.pause(100);

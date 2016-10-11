@@ -14,25 +14,29 @@ public class Nutrition {
 		double protein = ap.nextDouble("Grams of protein in the food?");
 		int statedCals = ap.nextInt("Calories stated on the food's label?");
 		
-		double carbsCals = Math.round(carbs * 40) / 10d;
-		double fatCals = Math.round(fat * 90) / 10d;
-		double proteinCals = Math.round(protein * 40) / 10d;
-		double fiberCals = Math.round((carbsCals + fatCals + proteinCals - statedCals) * 10) / 10d;
+		System.out.println(name + " has");
+		nutrition(carbs, fat, protein, statedCals);
+	}
+	
+	public static void nutrition(double c, double f, double p, int s) {
+		double carbsCals = calories(c, 4);
+		double fatCals = calories(f, 9);
+		double proteinCals = calories(p, 4);
+		double fiberCals = roundOne(carbsCals + fatCals + proteinCals - s);
 		
-		double carbsPercent = Math.round(carbsCals / statedCals * 1000) / 10d;
-		double fatPercent = Math.round(fatCals / statedCals * 1000) / 10d;
-		double proteinPercent = Math.round(proteinCals / statedCals * 1000) / 10d;
+		double carbsPercent = percentage(carbsCals, s);
+		double fatPercent = percentage(fatCals, s);
+		double proteinPercent = percentage(proteinCals, s);
 		
 		boolean lowCarbs = carbsPercent <= 25;
 		boolean lowFat = fatPercent <= 15;
 		boolean coinFlip = Math.random() < 0.5;
 		
-		System.out.println(name + " has");
-		System.out.println(carbs + " grams of carbohydrates = " + carbsCals + " Calories");
-		System.out.println(fat + " grams of fat = " + fatCals + " Calories");
-		System.out.println(protein + " grams of protein = " + proteinCals + " Calories");
+		System.out.println(c + " grams of carbohydrates = " + carbsCals + " Calories");
+		System.out.println(f + " grams of fat = " + fatCals + " Calories");
+		System.out.println(p + " grams of protein = " + proteinCals + " Calories");
 		System.out.println();
-		System.out.println("This food is said to have " + statedCals + " (available) Calories.");
+		System.out.println("This food is said to have " + s + " (available) Calories.");
 		System.out.println("With " + fiberCals + " unavailable Calories, this food has " + (fiberCals / 4) + " grams of fiber");
 		System.out.println();
 		System.out.println("Approximately");
@@ -43,5 +47,19 @@ public class Nutrition {
 		System.out.println("This food is acceptable for a low-carb diet?" +"\t" + lowCarbs);
 		System.out.println("This food is acceptable for a low-fat diet?" + "\t" + lowFat);
 		System.out.println("By coin flip, you should eat this food?" + "\t" + coinFlip);
+	}
+	
+	public static double calories(double nutrient, int perNut) {
+		double calories = nutrient * perNut;
+		return roundOne(calories);
+	}
+	
+	public static double percentage(double d1, double d2) {
+		double percent = d1 / d2 * 100;
+		return roundOne(percent);
+	}
+	
+	public static double roundOne(double d) {
+		return Math.round(d * 10) / 10d;
 	}
 }

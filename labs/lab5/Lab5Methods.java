@@ -83,7 +83,10 @@ public class Lab5Methods {
 		else if (k == 0) return 1;
 		else {
 			int product = n;
-			for (int i = 1; i < k; i++) product = product * n;
+			for (int i = 1; i < k; i++) {
+				//product = product * n;
+				//product = mult(product, n);
+			}
 			return product;
 		}
 	}
