@@ -17,7 +17,6 @@ public class Lines {
 		else {
 			StdDraw.point(x1, y1);
 			drawLine(x1 + (x2 - x1) / 100, y1 + (y2 - y1) / 100, x2, y2);
-			
 		}
 	}
 	
@@ -36,7 +35,7 @@ public class Lines {
 		//
 		// Draw rectangles of decreasing width and height
 		//
-		for (double r = 0.25; r < 0.5; r = r+.05) {
+		for (double r = 0.25; r < 0.5; r = r+.005) {
 			double s = 1-r;
 			drawLine(r,r, r, s);
 			drawLine(r, s, s, s);
