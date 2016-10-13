@@ -12,7 +12,13 @@ public class Lines {
 	 * @param y2 y coordinate of ending point
 	 */
 	public static void drawLine(double x1, double y1, double x2, double y2) {
-		// FIXME -- fill in this method according to the instructions
+		StdDraw.setPenRadius(0.01);
+		if (Math.abs(x2 - x1) <= 0.001 && Math.abs(y2 - y1) <= 0.001) return;
+		else {
+			StdDraw.point(x1, y1);
+			drawLine(x1 + (x2 - x1) / 100, y1 + (y2 - y1) / 100, x2, y2);
+			
+		}
 	}
 	
 	
@@ -30,7 +36,7 @@ public class Lines {
 		//
 		// Draw rectangles of decreasing width and height
 		//
-		for (double r = 0.25; r < 0.5; r = r+.005) {
+		for (double r = 0.25; r < 0.5; r = r+.05) {
 			double s = 1-r;
 			drawLine(r,r, r, s);
 			drawLine(r, s, s, s);

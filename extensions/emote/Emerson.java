@@ -1,4 +1,4 @@
-package hello;
+package emote;
 
 import java.awt.Color;
 
