@@ -1,4 +1,4 @@
-package pset9;
+package lab7;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
