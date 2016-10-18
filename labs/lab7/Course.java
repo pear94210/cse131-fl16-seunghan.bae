@@ -26,9 +26,9 @@ public class Course {
 	}
 	
 	public boolean addStudent(Student a) {
-		if (this.getRemainingSeats() <= 0) return false;
+		if (getRemainingSeats() <= 0) return false;
 		else {
-			this.roster[this.roster.length - this.getRemainingSeats()] = a;
+			this.roster[this.roster.length - getRemainingSeats()] = a;
 			this.numSeats --;
 			return true;
 		}
@@ -37,14 +37,14 @@ public class Course {
 	public double averageGPA() {
 		double totalGPA = 0.0;
 		
-		for (int i = 0; i < this.roster.length - this.getRemainingSeats(); i++) {
+		for (int i = 0; i < this.roster.length - getRemainingSeats(); i++) {
 			totalGPA = totalGPA + this.roster[i].getGPA();
 		}
 		
-		return totalGPA / (this.roster.length - this.getRemainingSeats());
+		return totalGPA / (this.roster.length - getRemainingSeats());
 	}
 	
 	public String toString() {
-		return this.getName() + this.getCredits();
+		return getName() + " " + getCredits();
 	}
 }

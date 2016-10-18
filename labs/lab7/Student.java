@@ -48,17 +48,17 @@ public class Student {
 	}
 	
 	public Student createLegacy(Student a) {
-		Student legacy = new Student(this.getName(), a.getName(), this.getStudentID() + a.getStudentID());
-		legacy.gpa = (this.getGPA() + a.getGPA()) / 2;
+		Student legacy = new Student(getName(), a.getName(), getStudentID() + a.getStudentID());
+		legacy.gpa = (getGPA() + a.getGPA()) / 2;
 		
-		if (this.getCredits() >= a.getCredits()) legacy.credits = this.getCredits();
+		if (getCredits() >= a.getCredits()) legacy.credits = getCredits();
 		else legacy.credits = a.getCredits();
 		
 		return legacy;
 	}
 	
 	public String toString() {
-		return this.getName() + " " + this.getStudentID();
+		return getName() + " " + getStudentID();
 	}
 	
 }
