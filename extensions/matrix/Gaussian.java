@@ -16,7 +16,51 @@ public class Gaussian {
 	 * @return
 	 */
 	public Matrix getSolution(){
-		return null;  // FIXME
+		for (int i = 0; i < this.coeff.getNumCols(); i++) {
+			for (int j = i + 1; j < this.coeff.getNumRows(); j++) {
+				while (this.coeff.getValue(i, i) != 0) {
+					int k = i + 1;
+					this.coeff.exchangeRows(i, k);
+					this.constants.exchangeRows(i, k);
+					k++;
+				}
+				
+				this.coeff.scaleRow(i, 1.0 / this.coeff.getValue(i, i));
+				this.constants.scaleRow(i,  1.0 / this.coeff.getValue(i, i));
+					
+				if (this.coeff.getValue(j, i) != 0) {
+					this.coeff.scaleRow(j, -1.0 / this.coeff.getValue(j, i));
+					this.constants.scaleRow(j, -1.0 / this.coeff.getValue(j, i));
+					this.coeff.addRows(i, j);
+					this.constants.addRows(i, j);
+				}
+			}
+		}
+		
+		for (int i = 1; i < this.coeff.getNumCols(); i++) {
+			for (int j = 0; j < i - 1; j++) {
+				if (this.coeff.getValue(i, i) != 0) {
+					this.coeff.scaleRow(i, 1.0 / this.coeff.getValue(i, i));
+					this.constants.scaleRow(i,  1.0 / this.coeff.getValue(i, i));
+					
+					if (this.coeff.getValue(j, i) != 0) {
+						this.coeff.scaleRow(j, -1.0 / this.coeff.getValue(j, i));
+						this.constants.scaleRow(j, -1.0 / this.coeff.getValue(j, i));
+						this.coeff.addRows(i, j);
+						this.constants.addRows(i, j);
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < this.coeff.getNumRows(); i++) {
+			if (this.coeff.getValue(i,  i) != 0) {
+				this.coeff.scaleRow(i, -1.0 / this.coeff.getValue(i, i));
+				this.constants.scaleRow(i, -1.0 / this.coeff.getValue(i, i));
+			}
+		}
+		
+		return this.constants;
 	}
 	
 	public String toString(){
