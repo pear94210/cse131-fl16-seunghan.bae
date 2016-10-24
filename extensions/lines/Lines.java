@@ -12,11 +12,11 @@ public class Lines {
 	 * @param y2 y coordinate of ending point
 	 */
 	public static void drawLine(double x1, double y1, double x2, double y2) {
-		StdDraw.setPenRadius(0.01);
-		if (Math.abs(x2 - x1) <= 0.001 && Math.abs(y2 - y1) <= 0.001) return;
+		StdDraw.setPenRadius(0.025);
+		if (Math.abs(x2 - x1) <= 0.01 && Math.abs(y2 - y1) <= 0.01) return;
 		else {
 			StdDraw.point(x1, y1);
-			drawLine(x1 + (x2 - x1) / 100, y1 + (y2 - y1) / 100, x2, y2);
+			drawLine(x1 + (x2 - x1) / 200, y1 + (y2 - y1) / 200, x2, y2);
 		}
 	}
 	

@@ -11,11 +11,14 @@ public class Matrix {
 	 * @param values
 	 */
 	public Matrix(double[][] in) {
+		double[][] copy = new double[in.length][in[0].length];
 		for (int i = 0; i < in.length; i++) {
-			for (int j = 0; j < in[i].length; j++) {
-				this.values[i][j] = in[i][j];
+			for (int j = 0; j < in[0].length; j++) {
+				copy[i][j] = in[i][j];
 			}
 		}
+		
+		this.values = copy;
 	}
 	
 	public double getValue(int row, int col) {
@@ -44,16 +47,19 @@ public class Matrix {
 	private static boolean arraysAreEqual(double[][] one, double[][] two) {
 		int equalCount = 0;
 		
-		if (one.length == two.length) equalCount++;
-		if (one[0].length == two[0].length) equalCount++;
-		
-		for (int i = 0; i < one.length; i++) {
-			for (int j = 0; j < one[0].length; j++) {
-				if (one[i][j] == two[i][j]) equalCount++;
+		if (one.length == two.length) {
+			if (one[0].length == two[0].length) {
+				for (int i = 0; i < one.length; i++) {
+					for (int j = 0; j < one[i].length; j++) {
+						if (one[i][j] == two[i][j]) equalCount++;
+					}
+				}
+				
+				if (equalCount == one.length * one[0].length) return true;
+				else return false;
 			}
+			else return false;
 		}
-		
-		if (equalCount == one.length * one[0].length + 2) return true;
 		else return false;
 	}
 	
@@ -106,8 +112,8 @@ public class Matrix {
 			
 			for (int i = 0; i < this.values.length; i++) {
 				for (int j = 0; j < other.getNumCols(); j++) {
-					for (int k = 0; k < other.getNumRows(); k++) {
-						ans[i][j] = this.values[i][k] * other.getValue(k, j);
+					for (int k = 0; k < this.values[i].length; k++) {
+						ans[i][j] = ans[i][j] + this.values[i][k] * other.getValue(k, j);
 					}
 				}
 			}
@@ -140,9 +146,12 @@ public class Matrix {
 	 * @param factor the amount by which to scale each element of row i
 	 */
 	public void scaleRow(int i, double factor) {
-		for (int j = 0; j < this.values[i].length; j++) {
-			this.values[i][j] = this.values[i][j] * factor;
+		if (i >= 0 && i < this.values.length) {
+			for (int j = 0; j < this.values[i].length; j++) {
+				this.values[i][j] = this.values[i][j] * factor;
+			}
 		}
+		else throw new IllegalArgumentException("row is out-of-bound");
 	}
 
 	/**

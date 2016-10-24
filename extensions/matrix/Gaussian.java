@@ -18,8 +18,8 @@ public class Gaussian {
 	public Matrix getSolution(){
 		for (int i = 0; i < this.coeff.getNumCols(); i++) {
 			for (int j = i + 1; j < this.coeff.getNumRows(); j++) {
+				int k = i + 1;
 				while (this.coeff.getValue(i, i) != 0) {
-					int k = i + 1;
 					this.coeff.exchangeRows(i, k);
 					this.constants.exchangeRows(i, k);
 					k++;
@@ -60,7 +60,7 @@ public class Gaussian {
 			}
 		}
 		
-		return this.constants;
+		return this.coeff;
 	}
 	
 	public String toString(){
