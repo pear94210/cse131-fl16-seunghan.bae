@@ -29,7 +29,7 @@ public class Course {
 		if (getRemainingSeats() <= 0) return false;
 		else {
 			this.roster[this.roster.length - getRemainingSeats()] = a;
-			this.numSeats --;
+			this.numSeats--;
 			return true;
 		}
 	}

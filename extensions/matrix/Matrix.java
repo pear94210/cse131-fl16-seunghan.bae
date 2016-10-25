@@ -12,6 +12,7 @@ public class Matrix {
 	 */
 	public Matrix(double[][] in) {
 		double[][] copy = new double[in.length][in[0].length];
+		
 		for (int i = 0; i < in.length; i++) {
 			for (int j = 0; j < in[0].length; j++) {
 				copy[i][j] = in[i][j];
