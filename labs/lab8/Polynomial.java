@@ -2,6 +2,7 @@ package lab8;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Polynomial {
 
@@ -14,30 +15,71 @@ public class Polynomial {
 		//
 		// Set the instance variable (list) to be a new linked list of Double type
 		//
-		list = null;   // FIXME
+		this.list = new LinkedList<Double>();
 	}
 
 	public String toString() {
-		return "A polynomial"; // FIXME
+		String s = "";
+		for (int i = 0; i < this.list.size(); i++) {
+			if (this.list.get(i) != 0) {
+				if (i == 0) s = s + " " + this.list.get(i);
+				else if (i == 1) s = s + " " + this.list.get(i) + "x";
+				else s = s + " " + this.list.get(i) + "x^" + i;
+			}
+		}
+		
+		return s;
 	}
 
 	public Polynomial addTerm(double coeff) {
-		//
-		// FIXME
-		//
+		this.list.add(coeff);
+		
 		return this;  // required by lab spec
 	}
 
 	public double evaluate(double x) {
-		return Math.random();  // FIXME
+		double ans = 0.0;
+		
+		for (int i = 0; i < this.list.size(); i++) {
+			ans = ans + (this.list.get(i) * Math.pow(x, i));
+		}
+		
+		return ans;
 	}
 	
 	public Polynomial derivative() {
-		return null;   // FIXME
+		Polynomial d = new Polynomial();
+		
+		for (int i = 1; i < this.list.size(); i++) {
+			d.addTerm(this.list.get(i) * i);
+		}
+		
+		return d;
 	}
 	
 	public Polynomial sum(Polynomial another) {
-		return null;   // FIXME
+		Polynomial sum = new Polynomial();
+		
+		if (this.list.size() <= another.list.size()) {
+			for (int i = 0; i < this.list.size(); i++) {
+				sum.addTerm(this.list.get(i) + another.list.get(i));
+			}
+			
+			for (int j = this.list.size(); j < another.list.size(); j++) {
+				sum.addTerm(another.list.get(j));
+			}
+		}
+		else {
+			for (int i = 0; i < another.list.size(); i++) {
+				sum.addTerm(this.list.get(i) + another.list.get(i));
+			}
+			
+			for (int j = another.list.size(); j < this.list.size(); j++) {
+				sum.addTerm(this.list.get(j));
+			}
+		}
+		
+		return sum;
 	}
 
 	/**
