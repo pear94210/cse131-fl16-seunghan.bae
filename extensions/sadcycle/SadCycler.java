@@ -1,12 +1,26 @@
 package sadcycle;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class SadCycler {
 
-	/*public Set<Long> findCycle(int base, long n) {
+	public static Set<Long> findCycle(int base, long n) {
+		Set<Long> set = new HashSet<Long>();
+		set.add(n);
 		
-	}*/
+		for (int i = 0; i < 100; i++) {
+			int[] digits = splitDigits(n);
+			long sum = 0;
+			
+			for (int j = 0; j < digits.length; j++) sum = sum + (long)Math.pow(digits[j], 2);
+			
+			n = changeBase(base, sum);
+			set.add(n);
+		}
+		
+		return set;
+	}
 	
 	public static int[] splitDigits(long n) {
 		int size = 1;
@@ -26,16 +40,28 @@ public class SadCycler {
 		return digits;
 	}
 	
-	/*public long changeBase(int base, long n) {
+	public static long changeBase(int base, long n) {
 		long ans = 0;
-		int k = base;
+		int degree = 1;
 		
-		while (n / k >=0) {
-			
+		while (n >= Math.pow(base, degree)) degree++;
+		degree = degree - 1;
+		
+		for (int i = 0; i < degree; i++) {
+			int digit = (int)(n % Math.pow(base, i + 1) / Math.pow(base, i));
+			n = n - (long)(digit * Math.pow(base, i));			
+			ans = ans + (long)((Math.pow(10, i) * digit));
 		}
-	}*/
+		
+		ans = ans + (long)((Math.pow(10, degree) * (n / Math.pow(base, degree))));
+		
+		return ans;
+	}
 	
 	public static void main(String[] args) {
-		
+		for (int i = 1; i < 1000; i++) {
+			Set<Long> test = findCycle(10, i);
+				if (test.contains(1l)) System.out.println(i + " is happy");
+		}
 	}
 }
