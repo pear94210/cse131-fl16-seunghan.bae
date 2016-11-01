@@ -19,7 +19,7 @@ public class Polynomial {
 	}
 	
 	/**
-	 * toString	
+	 * toString	(a+bx+cx^2+...)
 	 */
 	public String toString() {
 		String s = "";
@@ -54,7 +54,8 @@ public class Polynomial {
 		double ans = 0.0;
 		
 		for (int i = 0; i < this.list.size(); i++) {
-			ans = ans + (this.list.get(i) * Math.pow(x, i));
+			//ans = ans + (this.list.get(i) * Math.pow(x, i));
+			ans = this.list.get(this.list.size()- i - 1) + (x * ans);
 		}
 		
 		return ans;
