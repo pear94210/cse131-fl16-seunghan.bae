@@ -17,7 +17,10 @@ public class Polynomial {
 		//
 		this.list = new LinkedList<Double>();
 	}
-
+	
+	/**
+	 * toString	
+	 */
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < this.list.size(); i++) {
@@ -30,13 +33,23 @@ public class Polynomial {
 		
 		return s;
 	}
-
+	
+	/**
+	 * adds a term to the polynomial
+	 * @param coeff (constant for the term)
+	 * @return polynomial with the term added
+	 */
 	public Polynomial addTerm(double coeff) {
 		this.list.add(coeff);
 		
 		return this;  // required by lab spec
 	}
-
+	
+	/**
+	 * evaluate polynomial at point x
+	 * @param x
+	 * @return the value of polynomial at point x
+	 */
 	public double evaluate(double x) {
 		double ans = 0.0;
 		
@@ -47,6 +60,10 @@ public class Polynomial {
 		return ans;
 	}
 	
+	/**
+	 * get a derivative
+	 * @return derivative of polynomial
+	 */
 	public Polynomial derivative() {
 		Polynomial d = new Polynomial();
 		
@@ -57,6 +74,11 @@ public class Polynomial {
 		return d;
 	}
 	
+	/**
+	 * sums the polynomial with another
+	 * @param another (polynomial)
+	 * @return the sum of the two polynomials
+	 */
 	public Polynomial sum(Polynomial another) {
 		Polynomial sum = new Polynomial();
 		
