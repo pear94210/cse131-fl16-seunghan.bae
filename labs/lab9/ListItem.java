@@ -27,7 +27,11 @@ public class ListItem {
 	 * @return
 	 */
 	public ListItem duplicate() {
-		return null; // FIXME
+		if (this.next == null) return new ListItem(this.number, null);
+		else {
+			ListItem p = new ListItem(this.number, this.next.duplicate());
+			return p;
+		}
 	}
 
 	/**
@@ -37,7 +41,10 @@ public class ListItem {
 	 * @return
 	 */
 	public int length() {
-		return 0; // FIXME
+		if (this.next == null) return 1;
+		else {
+			return 1 + this.next.length();
+		}
 	}
 
 	/**
@@ -50,7 +57,7 @@ public class ListItem {
 	 */
 
 	public ListItem stretch(int n) {
-		return null;  // FIXME
+		return null;
 	}
 
 	/**
