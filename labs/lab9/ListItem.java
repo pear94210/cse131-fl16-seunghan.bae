@@ -57,7 +57,15 @@ public class ListItem {
 	 */
 
 	public ListItem stretch(int n) {
-		return null;
+		ListItem p = this;
+		
+		for (ListItem l = p; l.next != null; l = l.next) {
+			for (int i = 1; i < n; i++) {
+				p.next = p;
+			}
+		}
+		
+		return this;
 	}
 
 	/**
