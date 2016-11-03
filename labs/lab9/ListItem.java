@@ -55,17 +55,18 @@ public class ListItem {
 	 * @param n a positive (never 0) number specifying how many times to copy each element
 	 * @return
 	 */
-
 	public ListItem stretch(int n) {
-		ListItem p = this;
+		ListItem newList = new ListItem(this.number, this.next);
+		ListItem l = newList;
 		
-		for (ListItem l = p; l.next != null; l = l.next) {
-			for (int i = 1; i < n; i++) {
-				p.next = p;
+		for (ListItem p = this; p != null; p = p.next) {
+			for (int i = 0; i < n; i++) {
+				l.next = new ListItem(p.number, p.next);
+				l = l.next;
 			}
 		}
 		
-		return this;
+		return newList.next;
 	}
 
 	/**
@@ -76,9 +77,10 @@ public class ListItem {
 	 * @param n
 	 * @return
 	 */
-
 	public ListItem find(int n) {
-		return null;  // FIXME
+		if (this.number == n) return this;
+		else if (this.next == null) return null;
+		else return this.next.find(n);
 	}
 
 	/**
@@ -88,9 +90,12 @@ public class ListItem {
 	 * or iteratively,as you like.
 	 * @return
 	 */
-
 	public int max() {
-		return 0; // FIXME
+		if (this.next == null) return this.number;
+		else {
+			if (this.number > this.next.max()) return this.number;
+			else return this.next.max();
+		}
 	}
 
 	/**
@@ -100,7 +105,11 @@ public class ListItem {
 	 * @return
 	 */
 	public static ListItem evenElements(ListItem ls) {
-		return null;  // FIXME
+		if (ls == null) return null;
+		else {
+			if (ls.number % 2 == 0) return new ListItem(ls.number, ListItem.evenElements(ls.next));
+			else return ListItem.evenElements(ls.next);
+		}
 	}	
 
 
