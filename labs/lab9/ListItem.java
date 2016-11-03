@@ -112,7 +112,6 @@ public class ListItem {
 		}
 	}	
 
-
 	/**
 	 * Returns a string representation of the values reachable from
 	 * this list item.  Values appear in the same order as the occur in
