@@ -21,10 +21,17 @@ public class ListItem {
 	
 	final private int      value;  // the contained value in this item
 	private ListItem next;   // the next item in this list
+	private ListItem prev;
 	
 	public ListItem(int value, ListItem next) {
 		this.value = value;
 		this.next  = next;
+	}
+	
+	public ListItem(int value, ListItem next, ListItem prev) {
+		this.value = value;
+		this.next = next;
+		this.prev = prev;
 	}
 	
 	/**
@@ -34,11 +41,19 @@ public class ListItem {
 	public void setNext(ListItem newNext) {
 		this.next = newNext;
 	}
+	
+	public void setPrev(ListItem newPrev) {
+		this.prev = newPrev;
+	}
 
 	// a getter, or accessor
 	//
 	public ListItem getNext() {
 		return next;
+	}
+	
+	public ListItem getPrev() {
+		return prev;
 	}
 
 	public int getValue() {

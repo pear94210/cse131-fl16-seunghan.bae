@@ -44,7 +44,7 @@ public class TestLinkedListOfInts {
 	}
 
 	// Uncomment below when ready
-	// @Test
+	@Test
 	public void iterator() {
 		IntList list = genNewList();
 		for (int i=0; i < 10; ++i) {
@@ -56,7 +56,7 @@ public class TestLinkedListOfInts {
 	}
 
 	// Uncomment below when ready
-	// @Test
+	@Test
 	public void nestedIterator() {
 		IntList list = genNewList();
 		IntList products = genNewList();
@@ -77,7 +77,7 @@ public class TestLinkedListOfInts {
 	}
 	
 	// Uncomment below when ready
-	// @Test
+	@Test
 	public void nestedIterator2() {
 		
 		// Two lists of prime numbers
