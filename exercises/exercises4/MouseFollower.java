@@ -1,7 +1,5 @@
 package exercises4;
 
-import java.awt.Color;
-
 import cse131.ArgsProcessor;
 import sedgewick.StdDraw;
 
