@@ -9,7 +9,7 @@ public class Methods {
 	 * @return the sum
 	 */
 	public static int sum(int x, int y) {
-		return x+y;
+		return x + y;
 	}
 	
 	/**

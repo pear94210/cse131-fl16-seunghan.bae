@@ -28,9 +28,18 @@ public class Course {
 	public boolean addStudent(Student a) {
 		if (getRemainingSeats() <= 0) return false;
 		else {
-			this.roster[this.roster.length - getRemainingSeats()] = a;
-			this.numSeats--;
-			return true;
+			int already = this.roster.length;
+			
+			for (int i = 0; i < this.roster.length; i++) {
+				if (this.roster[i] == a) already--;
+			}
+			
+			if (already != this.roster.length) return false;
+			else {
+				this.roster[this.roster.length - getRemainingSeats()] = a;
+				this.numSeats--;
+				return true;
+			}
 		}
 	}
 	
@@ -47,4 +56,5 @@ public class Course {
 	public String toString() {
 		return getName() + " " + getCredits();
 	}
+	
 }

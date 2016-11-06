@@ -25,9 +25,9 @@ public class Polynomial {
 		String s = "";
 		for (int i = 0; i < this.list.size(); i++) {
 			if (this.list.get(i) != 0) {
-				if (i == 0) s = s + " " + this.list.get(i);
-				else if (i == 1) s = s + " " + this.list.get(i) + "x";
-				else s = s + " " + this.list.get(i) + "x^" + i;
+				if (i == 0) s = s + this.list.get(i) + " ";
+				else if (i == 1) s = s + this.list.get(i) + "x" + " ";
+				else s = s + this.list.get(i) + "x^" + i + " ";
 			}
 		}
 		
@@ -55,7 +55,7 @@ public class Polynomial {
 		
 		for (int i = 0; i < this.list.size(); i++) {
 			//ans = ans + (this.list.get(i) * Math.pow(x, i));
-			ans = this.list.get(this.list.size()- i - 1) + (x * ans);
+			ans = this.list.get(this.list.size()- 1 - i) + (x * ans);
 		}
 		
 		return ans;

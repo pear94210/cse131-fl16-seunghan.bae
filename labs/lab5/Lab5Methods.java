@@ -9,8 +9,8 @@ public class Lab5Methods {
 	public static int sumDownBy2(int n) {
 		if (n < 0) return 0;
 		else {
-			int sum = n;
-			int addValue = n - 2;
+			int sum = 0;
+			int addValue = n;
 			
 			while (addValue >=0) {
 				sum = sum + addValue;
@@ -82,10 +82,10 @@ public class Lab5Methods {
 		if (k < 0) return 0;
 		else if (k == 0) return 1;
 		else {
-			int product = n;
-			for (int i = 1; i < k; i++) {
+			int product = 1;
+			for (int i = 0; i < k; i++) {
 				//product = product * n;
-				//product = mult(product, n);
+				product = mult(product, n);
 			}
 			return product;
 		}

@@ -67,7 +67,7 @@ public class Rectangle {
 	 * @return true if rectangle is smaller than a
 	 */
 	public boolean smallerArea(Rectangle a) {
-		if (getArea() >= a.getArea()) return false;
+		if (this.getArea() >= a.getArea()) return false;
 		else return true;
 	}
 	
