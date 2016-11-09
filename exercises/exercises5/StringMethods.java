@@ -17,7 +17,7 @@ public class StringMethods {
 	}
 	
 	public static String nConcat(String s, int n) {
-		if (n == 0) return "";
+		if (n <= 0) return "";
 		
 		else {
 			String[] target = new String[n];
