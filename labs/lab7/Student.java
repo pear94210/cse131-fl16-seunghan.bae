@@ -51,8 +51,7 @@ public class Student {
 		Student legacy = new Student(getName(), a.getName(), getStudentID() + a.getStudentID());
 		legacy.gpa = (getGPA() + a.getGPA()) / 2;
 		
-		if (getCredits() >= a.getCredits()) legacy.credits = getCredits();
-		else legacy.credits = a.getCredits();
+		legacy.credits = Math.max(getCredits(), a.getCredits());
 		
 		return legacy;
 	}

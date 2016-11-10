@@ -10,13 +10,7 @@ public class Lab5Methods {
 		if (n < 0) return 0;
 		else {
 			int sum = 0;
-			int addValue = n;
-			
-			while (addValue >=0) {
-				sum = sum + addValue;
-				addValue = addValue - 2;
-			}
-			
+			for (int i = n; i >= 0; i = i - 2) sum = sum + i;
 			return sum;
 		}
 	}

@@ -29,7 +29,7 @@ public class Methods {
 	}
 	
 	public static double harmonicSum(int n) {
-		if (n <= 1) return 1;
+		if (n <= 0) return 0;
 		else return harmonicSum(n - 1) + (1.0 / n);
 	}
 	
