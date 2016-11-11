@@ -59,7 +59,7 @@ public class SadCycler {
 	}
 	
 	public static void main(String[] args) {
-		for (int i = 1; i < 1000; i++) {
+		for (int i = 1; i < 100; i++) {
 			Set<Long> test = findCycle(10, i);
 				if (test.contains(1l)) System.out.println(i + " is happy");
 		}
