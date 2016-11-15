@@ -24,7 +24,7 @@ public class ListItem {
 	 * Return a copy of this list using recursion.  No
 	 * credit if you use any iteration!  All existing lists should remain
 	 * intact -- this method must not mutate anything.
-	 * @return
+	 * @return copy of the list
 	 */
 	public ListItem duplicate() {
 		if (this.next == null) return new ListItem(this.number, null);
@@ -38,7 +38,7 @@ public class ListItem {
 	 * Recursively compute the number of elements in the list. No
 	 * credit if you use any iteration!  All existing lists should remain
 	 * intact.
-	 * @return
+	 * @return length of the list
 	 */
 	public int length() {
 		if (this.next == null) return 1;
@@ -53,7 +53,7 @@ public class ListItem {
 	 * You must do this method iteratively.  No credit
 	 * if you use any recursion!
 	 * @param n a positive (never 0) number specifying how many times to copy each element
-	 * @return
+	 * @return stretched version of the list
 	 */
 	public ListItem stretch(int n) {
 		ListItem newList = new ListItem(this.number, this.next);
@@ -75,7 +75,7 @@ public class ListItem {
 	 * modified as a result of this call.  You may do this recursively
 	 * or iteratively, as you like.
 	 * @param n
-	 * @return
+	 * @return index of n
 	 */
 	public ListItem find(int n) {
 		if (this.number == n) return this;
@@ -88,7 +88,7 @@ public class ListItem {
 	 * from this point forward.  No lists should be modified
 	 * as a result of this call.  You may do this method recursively
 	 * or iteratively,as you like.
-	 * @return
+	 * @return maximum entry in the list
 	 */
 	public int max() {
 		if (this.next == null) return this.number;
@@ -102,7 +102,7 @@ public class ListItem {
 	 * Returns a copy of the list beginning at ls, but containing
 	 * only elements that are even.
 	 * @param ls
-	 * @return
+	 * @return even list
 	 */
 	public static ListItem evenElements(ListItem ls) {
 		if (ls == null) return null;
