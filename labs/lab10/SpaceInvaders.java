@@ -56,7 +56,15 @@ public class SpaceInvaders {
 		
 		while(true) {
 			this.player.move();
+			Bullet b = this.player.shoot();
+			if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_UP)) {
+				b.draw();
+				while (b.getY() <= 11) {
+					b.move("player");
+				}
+			}
 			this.player.shoot();
+			
 		}		
 	}
 }

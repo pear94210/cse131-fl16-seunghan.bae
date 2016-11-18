@@ -58,14 +58,9 @@ public class Player implements GameObject{
 		StdDraw.show(50);
 	}
 	
-	public void shoot() {
-		if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_UP)) {
-			Bullet b = new Bullet(this.x, this.y + 0.32);
-			b.draw();
-			while (b.getY() <= 11) {
-				b.move("player");
-			}
-		}
+	public Bullet shoot() {
+		Bullet b = new Bullet(this.x, this.y + 0.32);
+		return b;
 	}
 
 	@Override
