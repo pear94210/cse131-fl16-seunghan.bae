@@ -45,7 +45,7 @@ public class Wall implements GameObject {
 
 	@Override
 	public void draw() {
-		StdDraw.filledRectangle(this.x, this.y, 0.6, 0.25);
+		StdDraw.filledSquare(this.x, this.y, 0.1);
 	}
 
 	@Override
