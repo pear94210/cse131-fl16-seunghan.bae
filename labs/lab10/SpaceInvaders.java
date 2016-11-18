@@ -23,6 +23,10 @@ public class SpaceInvaders {
 			walls[i] = new Wall(-4.4 + (2.2 * i));
 		}
 	}
+	
+	public void moveAliens() {
+		
+	}
 		
 //		for (int j = 0; j < 11; j++) {
 //			for (int i = 0; i < 13; i++) {
