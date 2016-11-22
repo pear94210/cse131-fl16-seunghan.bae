@@ -3,8 +3,16 @@ package sadcycle;
 import java.util.HashSet;
 import java.util.Set;
 
+import cse131.ArgsProcessor;
+
 public class SadCycler {
 
+	/**
+	 * 
+	 * @param base
+	 * @param n
+	 * @return the set of numbers in sad cycle
+	 */
 	public static Set<Long> findCycle(int base, long n) {
 		Set<Long> set = new HashSet<Long>();
 		set.add(n);
@@ -22,6 +30,11 @@ public class SadCycler {
 		return set;
 	}
 	
+	/**
+	 * 
+	 * @param n
+	 * @return split the digits of n and return as an array
+	 */
 	public static int[] splitDigits(long n) {
 		int size = 1;
 		long temp = n;
@@ -40,6 +53,12 @@ public class SadCycler {
 		return digits;
 	}
 	
+	/**
+	 * 
+	 * @param base
+	 * @param n
+	 * @return change the base of n
+	 */
 	public static long changeBase(int base, long n) {
 		long ans = 0;
 		int degree = 1;
@@ -59,7 +78,10 @@ public class SadCycler {
 	}
 	
 	public static void main(String[] args) {
-		for (int i = 1; i < 100; i++) {
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int n = ap.nextInt("Input Integer");
+		
+		for (int i = 1; i <= n; i++) {
 			Set<Long> test = findCycle(10, i);
 				if (test.contains(1l)) System.out.println(i + " is happy");
 		}

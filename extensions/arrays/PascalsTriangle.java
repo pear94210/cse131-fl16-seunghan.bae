@@ -9,13 +9,16 @@ public class PascalsTriangle {
 		
 		int N = ap.nextInt("How many rows?");
 		
+		// an N by N array
 		int[][] triangle = new int[N][N];
 		
 		for (int r = 0; r < triangle.length; r++) {
 			for (int c = 0; c < triangle.length; c++) {
+				// base case = 1
 				if (c == 0) triangle[r][c] = 1;
 				else if (c == r) triangle[r][c] = 1;
 				else if (r < 0 || c < 0 || c > r) triangle[r][c]=0;
+				// sum of the previous two entries
 				else triangle[r][c] = triangle[r - 1][c] + triangle[r - 1][c - 1];
 			}
 		}
