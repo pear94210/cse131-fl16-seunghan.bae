@@ -10,14 +10,14 @@ public interface GameObject {
 	
 	public void setY(double y);
 	
-	public boolean isHit();
+	public double getSize();
 	
-	public void setHit(boolean hit);
+	public void setSize(double size);
 	
 	public void draw();
 	
 	public void move();
-
-	void move(String s);
+	
+	public void hit();
 	
 }

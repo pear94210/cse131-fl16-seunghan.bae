@@ -1,18 +1,18 @@
 package lab10;
 
-import java.awt.Color;
-
 import sedgewick.StdDraw;
 
 public class Bullet implements GameObject{
 
 	private double x, y;
-	private boolean hit;
+	private double size;
+	private boolean direction;
 	
-	public Bullet(double x, double y) {
+	public Bullet(double x, double y, boolean d) {
 		this.x = x;
 		this.y = y;
-		this.hit = false;
+		this.size = 0.04;
+		this.direction = d;
 	}
 
 	public double getX() {
@@ -31,32 +31,35 @@ public class Bullet implements GameObject{
 		this.y = y;
 	}
 
-	public boolean isHit() {
-		return hit;
+	public double getSize() {
+		return size;
 	}
 
-	public void setHit(boolean hit) {
-		this.hit = hit;
+	public void setSize(double size) {
+		this.size = size;		
+	}
+	
+	public boolean getDirection() {
+		return direction;
+	}
+	
+	public void setDirection(boolean d) {
+		this.direction = d;
 	}
 	
 	public void draw() {
-		StdDraw.setPenColor(Color.BLACK);
-		StdDraw.filledCircle(this.x, this.y, 0.05);
+		StdDraw.filledCircle(this.x, this.y, this.size);
 	}
 	
-	public void move(String s) {
-		StdDraw.setPenColor(Color.WHITE);
-		StdDraw.filledCircle(this.x, this.y, 0.07);
-		
-		if (s == "player") this.y = this.y + 0.25;
-		if (s == "alien") this.y = this.y - 0.25;
-			
-		this.draw();
-		StdDraw.show(50);
+	public void move() {		
+		if (this.direction) this.y = this.y + 0.25;
+		else this.y = this.y - 0.25;
 	}
-
-	@Override
-	public void move() {
-		
+	
+	public void hit() {
+		this.x = 100;
+		this.y = 100;
+		this.size = 0;
 	}
+	
 }

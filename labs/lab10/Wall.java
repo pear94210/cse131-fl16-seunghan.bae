@@ -5,57 +5,51 @@ import sedgewick.StdDraw;
 public class Wall implements GameObject {
 
 	private double x, y;
-	private boolean hit;
+	private double size;
 	
-	public Wall(double x) {
+	public Wall(double x, double y) {
 		this.x = x;
-		this.y = 1.0;
-		this.hit = false;
+		this.y = y;
+		this.size = 0.1;
 	}
 	
 	public double getX() {
 		return x;
 	}
 
-	@Override
 	public void setX(double x) {
 		this.x = x;
 		
 	}
 
-	@Override
 	public double getY() {
 		return y;
 	}
 
-	@Override
 	public void setY(double y) {
 		this.y = y;
 	}
-
-	@Override
-	public boolean isHit() {
-		return hit;
+	
+	public double getSize() {
+		return size;
 	}
 
-	@Override
-	public void setHit(boolean hit) {
-		this.hit = hit;
+	public void setSize(double size) {
+		this.size = size;		
 	}
 
-	@Override
 	public void draw() {
 		StdDraw.filledSquare(this.x, this.y, 0.1);
 	}
 
-	@Override
 	public void move() {
 		
 	}
-
-	@Override
-	public void move(String s) {
-		
+	
+	public void hit() {
+		this.x = 100;
+		this.y = 100;
+		this.size = 0;
 	}
 	
 }

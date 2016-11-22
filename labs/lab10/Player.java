@@ -1,18 +1,16 @@
 package lab10;
 
-import java.awt.Color;
-
 import sedgewick.StdDraw;
 
 public class Player implements GameObject{
 
 	private double x, y;
-	private boolean hit;
+	private double size;
 	
 	public Player() {
 		this.x = 0.0;
 		this.y = 0.0;
-		this.hit = false;
+		this.size = 0.241;
 	}
 
 	public double getX() {
@@ -31,41 +29,32 @@ public class Player implements GameObject{
 		this.y = y;
 	}
 
-	public boolean isHit() {
-		return hit;
+	public double getSize() {
+		return size;
 	}
 
-	public void setHit(boolean hit) {
-		this.hit = hit;
+	public void setSize(double size) {
+		this.size = size;		
 	}
 	
 	public void draw() {
-		StdDraw.setPenColor(Color.BLACK);
-		StdDraw.filledCircle(this.getX(), this.getY(), 0.25);
+		StdDraw.filledCircle(this.x, this.y, this.size);
 	}
 	
-	public void move() {
-		StdDraw.setPenColor(Color.WHITE);
-		StdDraw.filledCircle(this.getX(), this.getY(), 0.27);
+	public void move() {		
+		if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_LEFT)) this.x = this.x - 0.2;
+		if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_RIGHT)) this.x = this.x + 0.2;
 		
-		if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_LEFT)) this.setX(this.getX() - 0.25);
-		if (ArcadeKeys.isKeyPressed(0, ArcadeKeys.KEY_RIGHT)) this.setX(this.getX() + 0.25);
-		
-		if (this.getX() > 5.0) this.setX(this.getX() - 0.25);
-		if (this.getX() < -5.0) this.setX(this.getX() + 0.25);
-
-		this.draw();
-		StdDraw.show(50);
+		if (this.getX() > 5.0) this.setX(this.getX() - 0.2);
+		if (this.getX() < -5.0) this.setX(this.getX() + 0.2);
+	}
+	
+	public void hit() {
+		this.size = this.size - 0.08;
 	}
 	
 	public Bullet shoot() {
-		Bullet b = new Bullet(this.x, this.y + 0.32);
-		return b;
-	}
-
-	@Override
-	public void move(String s) {
-		
+		return new Bullet(this.x, this.y + this.size + 0.05, true);
 	}
 
 }
