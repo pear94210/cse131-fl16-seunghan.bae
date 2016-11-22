@@ -68,10 +68,9 @@ public class Game {
 			}
 		}
 		if (this.bullets[1] == null) {
-			if (Math.random() < 0.1) {
+			if (Math.random() < 0.2) {
 				int ix = (int)(Math.random() * 5);
 				int iy = (int)(Math.random() * 10);
-				
 				this.bullets[1] = this.aliens[ix][iy].shoot();
 			}
 		}
@@ -98,12 +97,11 @@ public class Game {
 			}
 		}
 		
-		double[][] alienDist = new double[5][10];
-		for (int r = 0; r < 5; r++) {
-			for (int c = 0; c < 10; c++) {
-				if (this.bullets[0] != null) {
-					alienDist[r][c] = Math.sqrt(Math.pow(this.aliens[r][c].getX() - this.bullets[0].getX(), 2) + Math.pow(this.aliens[r][c].getY() - this.bullets[0].getY(), 2));
-					if (alienDist[r][c] <= this.aliens[r][c].getSize() + this.bullets[0].getSize()) {
+		if (this.bullets[0] != null) {
+			for (int r = 0; r < 5; r++) {
+				for (int c = 0; c < 10; c++) {
+					double alienDist = Math.sqrt(Math.pow(this.aliens[r][c].getX() - this.bullets[0].getX(), 2) + Math.pow(this.aliens[r][c].getY() - this.bullets[0].getY(), 2));
+					if (alienDist <= this.aliens[r][c].getSize() + this.bullets[0].getSize()) {
 						this.aliens[r][c].hit();
 						this.bullets[0].hit();
 						this.killCount--;
@@ -112,13 +110,12 @@ public class Game {
 			}
 		}
 		
-		double[][] wallDist = new double[3][24];
-		for (int r = 0; r < 3; r++) {
-			for (int c = 0; c < 24; c++) {
-				for (int i = 0; i < 2; i++) {
-					if (this.bullets[i] != null) {
-						wallDist[r][c] = Math.sqrt(Math.pow(this.walls[r][c].getX() - this.bullets[i].getX(), 2) + Math.pow(this.walls[r][c].getY() - this.bullets[i].getY(), 2));
-						if (wallDist[r][c] <= this.walls[r][c].getSize() + this.bullets[i].getSize()) {
+		for (int i = 0; i < 2; i++) {
+			if (this.bullets[i] != null) {
+				for (int r = 0; r < 3; r++) {
+					for (int c = 0; c < 24; c++) {
+						double wallDist = Math.sqrt(Math.pow(this.walls[r][c].getX() - this.bullets[i].getX(), 2) + Math.pow(this.walls[r][c].getY() - this.bullets[i].getY(), 2));
+						if (wallDist <= this.walls[r][c].getSize() + this.bullets[i].getSize()) {
 							this.walls[r][c].hit();
 							this.bullets[i].hit();
 						}
@@ -131,8 +128,10 @@ public class Game {
 	public void play() {
 		StdDraw.setXscale(-5.5, 5.5);
 		StdDraw.setYscale(-1.0, 10.0);
-			
-		while(this.player.getSize() > 0.02 && this.killCount > 0) {
+		
+		boolean paCollide = false;
+		
+		while(this.player.getSize() > 0.02 && this.killCount > 0 && paCollide == false) {
 			StdDraw.clear(Color.BLACK);
 			StdDraw.setPenColor(Color.WHITE);
 			
@@ -155,11 +154,18 @@ public class Game {
 			shootBullets();
 			moveBullets();
 			collide();
+			
+			for (int r = 0; r < 5; r++) {
+				for (int c = 0; c < 10; c++) {
+					double paDist = Math.sqrt(Math.pow(this.player.getX() - this.aliens[r][c].getX(), 2) + Math.pow(this.player.getY() - this.aliens[r][c].getY(), 2));
+					if (paDist <= 0.24 + this.aliens[r][c].getSize()) paCollide = true;
+				}
+			}
 
-			StdDraw.text(-4.5, -1, "Aliens Left: " + this.killCount);
-			if (this.killCount == 0) StdDraw.text(4.5, -1, "You Win!");
-			if (this.player.getSize() <= 0.02) StdDraw.text(4.5, -1, "You Lose");
-
+			StdDraw.textLeft(-5.5, -1, this.killCount + " ALIENS LEFT");
+			if (this.killCount == 0) StdDraw.textRight(5.5, -1, "YOU WIN!");
+			if (this.player.getSize() <= 0.02 || paCollide == true) StdDraw.textRight(5.5, -1, "YOU LOSE!");
+			
 			StdDraw.show(50);
 		}
 	}
