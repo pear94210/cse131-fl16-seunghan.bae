@@ -6,11 +6,13 @@ public class Player implements GameObject{
 
 	private double x, y;
 	private double size;
+	private int life;
 	
 	public Player() {
 		this.x = 0.0;
 		this.y = 0.0;
-		this.size = 0.241;
+		this.size = 0.25;
+		this.life = 3;
 	}
 
 	public double getX() {
@@ -37,6 +39,14 @@ public class Player implements GameObject{
 		this.size = size;		
 	}
 	
+	public int getLife() {
+		return life;
+	}
+	
+	public void setLife(int life) {
+		this.life = life;
+	}
+	
 	public void draw() {
 		StdDraw.filledCircle(this.x, this.y, this.size);
 	}
@@ -50,7 +60,7 @@ public class Player implements GameObject{
 	}
 	
 	public void hit() {
-		this.size = this.size - 0.08;
+		this.life--;
 	}
 	
 	public Bullet shoot() {
