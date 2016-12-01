@@ -161,13 +161,10 @@ public class Game {
 	}
 	
 	public void resetAliens() {
-		if (killCount > 0 && killCount % 50 == 0) {
-			for (int r = 0; r < 5; r++) {
-				for (int c = 0; c < 10; c++) {
-					this.aliens[r][c] = new Alien(-5 + (0.75* c), 9.5 - (0.75 * r));
-				}
+		for (int r = 0; r < 5; r++) {
+			for (int c = 0; c < 10; c++) {
+				this.aliens[r][c] = new Alien(-5 + (0.75* c), 9.0 - (0.75 * r));
 			}
-			this.alienCount = 0;
 		}
 	}
 
@@ -194,12 +191,14 @@ public class Game {
 			}
 
 			this.player.move();
+			if (this.killCount != 0 && this.killCount % 50 == 0) {
+				resetAliens();
+			}
 			moveAliens();
 			shootBullets();
 			moveBullets();
 			collide();
 			paCollide();
-			resetAliens();
 			if (Math.random() < 0.1) launchSS();
 			if (this.ss[0] != null) {
 				this.ss[0].draw();

@@ -61,7 +61,7 @@ public class Alien implements GameObject{
 		this.y = -100;
 		this.size = 0;
 	}
-
+	
 	public Bullet shoot() {
 		return new Bullet(this.x, this.y - this.size - 0.05, false);
 	}
