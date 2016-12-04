@@ -13,6 +13,7 @@ public class Alien implements Moveable {
 	private double speed;	
 	private boolean upDown;
 	private boolean isAlive = true;
+	private boolean mothership;
 	
 	/**
 	 * Creates an Alien object to be implemented in the game
@@ -20,14 +21,16 @@ public class Alien implements Moveable {
 	 * @param y- y-coordinate of alien (center)
 	 * @param speed- speed at which the alien moves 
 	 * @param upDown- true if alien moves up/down pattern; false if alien moves side-to-side pattern
+	 * @param mothership- true if mothership; false if normal alien
 	 */
-	public Alien(double x, double y, double speed, boolean upDown) {
+	public Alien(double x, double y, double speed, boolean upDown, boolean mothership) {
 		this.posX = x;
 		this.posY = y;
 		this.startX = x;
 		this.startY = y;
 		this.speed = -speed;
 		this.upDown = upDown;
+		this.mothership = mothership;
 	}
 	
 	/**
@@ -63,11 +66,20 @@ public class Alien implements Moveable {
 	}
 	
 	/**
+	 * 
+	 * @return true if mothership; false if normal alien
+	 */
+	public boolean getMothership() {
+		return this.mothership;
+	}
+	
+	/**
 	 * draw alien
 	 */
 	public void draw() {
 		StdDraw.setPenColor(StdDraw.WHITE);
-		StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
+		if (mothership) StdDraw.filledCircle(this.posX, this.posY, this.width/2);
+		else StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
 	}
 	
 	/**
@@ -102,7 +114,7 @@ public class Alien implements Moveable {
 	
 	/**
 	 * 
-	 * @return whether alien is alive
+	 * @return true if alien is alive
 	 */
 	public boolean isAlive() {
 		return this.isAlive;

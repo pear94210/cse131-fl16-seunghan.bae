@@ -46,31 +46,32 @@ public class Game {
 	}
 	
 	public void addAliens(){
-		addAlien(0.5, 0.5, alienSpeed, true);
-		addAlien(-0.5, 0.5, alienSpeed, true);
-		addAlien(-0.9, 0.5, alienSpeed, false);
+		addAlien(0.5, 0.5, alienSpeed, true, false);
+		addAlien(-0.5, 0.5, alienSpeed, true, false);
+		addAlien(-0.9, 0.25, alienSpeed, false, false);
+		addAlien(-0.9, 0.75, 2 * alienSpeed, false, true);
 	}
 	
-	private void addAlien(double x, double y, double speed, boolean upDown)
+	private void addAlien(double x, double y, double speed, boolean upDown, boolean mothership)
 	{
-		Alien a = new Alien(x, y, speed, upDown);
+		Alien a = new Alien(x, y, speed, upDown, mothership);
 		aliens.add(a);
 		move.add(a);
 	}
 	
 	public void play(){
-		// Draw game board with score shown + draw players & aliens and make them move
+		// Draw game board with score shown + draw player & aliens and make them move
 		drawBoard(score);
 		for (Moveable m : move) {
 			m.move();
 			m.draw();
 		}
 		
-		// If player fires and there are less than 3 bullets outstanding, create new bullet and make it move
+		// If player1 fires and there are less than 3 bullets outstanding, create new bullet and make it move
 		if (player.fire() && bullets.size() < 3) {
-			Bullet b = new Bullet(player.getPosX(), player.getPosY() + .15, .05);
-			move.add(b);
-			bullets.add(b);
+			Bullet b1 = new Bullet(player.getPosX(), player.getPosY() + .15, .05);
+			move.add(b1);
+			bullets.add(b1);
 		}
 		
 		// Code for collision between player-alien and alien-bullet + bullet going out of the board
@@ -84,7 +85,8 @@ public class Game {
 				if (b.collide(a)) {
 					a.die();
 					b.setOffScreen();
-					score += 50;
+					if (a.getMothership()) score += 100;
+					else score += 50;
 				}
 				else if (b.getPosY() >= 1){
 					b.setOffScreen();

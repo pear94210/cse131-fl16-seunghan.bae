@@ -83,7 +83,7 @@ public class Player implements Moveable {
 	
 	/**
 	 * 
-	 * fire bullet
+	 * Fire bullet
 	 */
 	public boolean fire() {
 		return (ArcadeKeys.isKeyPressed(0, 0)); //key w pushed
