@@ -70,8 +70,8 @@ public class Game {
 			m.draw();
 		}
 		
-		// If player fires and there is no bullet outstanding, create new bullet and make it move
-		if (player.fire() && bullets.size() < 1) {
+		// If player fires and there less than 3 bullets outstanding, create new bullet and make it move
+		if (player.fire() && bullets.size() < 3) {
 			Bullet b1 = new Bullet(player.getPosX(), player.getPosY() + .15, .05);
 			move.add(b1);
 			bullets.add(b1);
