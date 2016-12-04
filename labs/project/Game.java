@@ -142,7 +142,7 @@ public class Game {
 		if (aliens.isEmpty()) {
 			alienSpeed *= 1.5;
 			addAliens();
-			obstacle.setWidth(0.61);
+			obstacle.reset();
 			move.add(obstacle);
 		}
 	}

@@ -61,14 +61,6 @@ public class Obstacle implements Moveable {
 	}
 	
 	/**
-	 * change width of the obstacle
-	 * @param width- new length of the obstacle
-	 */
-	public void setWidth(double width) {
-		this.width = width;
-	}
-	
-	/**
 	 * 
 	 * @return number of hits the player has
 	 */
@@ -82,6 +74,14 @@ public class Obstacle implements Moveable {
 	public void die() {
 		this.hits++;
 		this.width -= 0.2;
+	}
+	
+	/**
+	 * Resets obstacle to its original width and hits
+	 */
+	public void reset() {
+		this.width = 0.61;
+		this.hits = 0;
 	}
 	
 	public boolean collide(Bullet b) {
