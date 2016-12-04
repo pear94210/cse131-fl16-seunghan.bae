@@ -8,8 +8,7 @@ public class Alien implements Moveable {
 	private double posY;
 	private final double startX;
 	private final double startY;
-	private final double width = 0.15;
-	private final double height = 0.15;
+	private final double size = 0.15;
 	private double speed;	
 	private boolean upDown;
 	private boolean isAlive = true;
@@ -51,18 +50,10 @@ public class Alien implements Moveable {
 	
 	/**
 	 * 
-	 * @return width- width of alien
+	 * @return size- size of alien
 	 */
-	public double getWidth() {
-		return this.width;
-	}
-	
-	/**
-	 * 
-	 * @return height- height of alien
-	 */
-	public double getHeight() {
-		return this.height;
+	public double getSize() {
+		return this.size;
 	}
 	
 	/**
@@ -78,8 +69,8 @@ public class Alien implements Moveable {
 	 */
 	public void draw() {
 		StdDraw.setPenColor(StdDraw.WHITE);
-		if (mothership) StdDraw.filledCircle(this.posX, this.posY, this.width/2);
-		else StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
+		if (mothership) StdDraw.filledCircle(this.posX, this.posY, this.size/2);
+		else StdDraw.filledSquare(this.posX, this.posY, this.size/2);
 	}
 	
 	/**
@@ -96,6 +87,7 @@ public class Alien implements Moveable {
 		}
 
 	}
+	
 	/**
 	 * 
 	 * @return whether alien is off-screen

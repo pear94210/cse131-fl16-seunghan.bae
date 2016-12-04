@@ -18,6 +18,7 @@ public class Game {
 	private LinkedList<Moveable> move;
 	private LinkedList<Bullet> bullets;
 	private Player player;
+	private Obstacle obstacle;
 	private double alienSpeed;
 	private int score;
 	
@@ -28,6 +29,8 @@ public class Game {
 		StdDraw.setScale(-1, 1);
 		player = new Player(0, -.9, .04, 3);
 		move.add(player);
+		obstacle = new Obstacle();
+		move.add(obstacle);
 		alienSpeed = 0.04;
 		addAliens();
 		score = 0;
@@ -38,7 +41,7 @@ public class Game {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledRectangle(0, 0, 1, 1);
 		StdDraw.setPenColor(Color.WHITE);
-		StdDraw.text(0.75, 0.9, "Score: " + score);
+		StdDraw.text(.75, .9, "Score: " + score);
 	}
 	
 	public boolean isOver() {
@@ -46,10 +49,10 @@ public class Game {
 	}
 	
 	public void addAliens(){
-		addAlien(0.5, 0.5, alienSpeed, true, false);
-		addAlien(-0.5, 0.5, alienSpeed, true, false);
-		addAlien(-0.9, 0.25, alienSpeed, false, false);
-		addAlien(-0.9, 0.75, 2 * alienSpeed, false, true);
+		addAlien(.5, .5, alienSpeed, true, false);
+		addAlien(-.5, .5, alienSpeed, true, false);
+		addAlien(-.9, .25, alienSpeed, false, false);
+		addAlien(-.9, .75, 2 * alienSpeed, false, true);
 	}
 	
 	private void addAlien(double x, double y, double speed, boolean upDown, boolean mothership)
@@ -67,8 +70,8 @@ public class Game {
 			m.draw();
 		}
 		
-		// If player1 fires and there are less than 3 bullets outstanding, create new bullet and make it move
-		if (player.fire() && bullets.size() < 3) {
+		// If player fires and there is no bullet outstanding, create new bullet and make it move
+		if (player.fire() && bullets.size() < 1) {
 			Bullet b1 = new Bullet(player.getPosX(), player.getPosY() + .15, .05);
 			move.add(b1);
 			bullets.add(b1);
@@ -94,6 +97,18 @@ public class Game {
 			}
 		}
 		/*CODE A*/ //end
+		
+		// Code for collision between obstacle-bullet
+		for (Bullet b : bullets) {
+			if (obstacle.collide(b)) {
+				obstacle.die();
+				b.setOffScreen();
+				if (obstacle.getHits() > 0 && obstacle.getHits() % 3 == 0) move.remove(obstacle);
+			}
+			else if (b.getPosY() >= 1){
+				b.setOffScreen();
+			}
+		}
 		
 		// Used to prevent concurrent modification errors
 		Iterator<Alien> alienIter = aliens.iterator();
@@ -127,6 +142,8 @@ public class Game {
 		if (aliens.isEmpty()) {
 			alienSpeed *= 1.5;
 			addAliens();
+			obstacle.setWidth(0.61);
+			move.add(obstacle);
 		}
 	}
 	
@@ -136,7 +153,8 @@ public class Game {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledRectangle(0, 0, 1, 1);
 		StdDraw.setPenColor(Color.WHITE);
-		StdDraw.text(0, 0, "GAME OVER");
+		StdDraw.text(0, .1, "GAME OVER");
+		StdDraw.text(0, -.1, "Score: " + score);
 		StdDraw.show(100);
 	}
 

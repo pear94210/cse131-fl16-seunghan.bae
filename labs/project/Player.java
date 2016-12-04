@@ -10,8 +10,7 @@ public class Player implements Moveable {
 	private double posY; 
 	private final double startPosX;
 	private final double startPosY;
-	private final double width = 0.1;
-	private final double height = 0.1;
+	private final double size = 0.1;
 	private Color color;
 	private int lives;
 	private double speed;
@@ -39,8 +38,8 @@ public class Player implements Moveable {
 	 */
 	public void draw() {
 		StdDraw.setPenColor(this.color);
-		StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
-		StdDraw.filledRectangle(this.posX, (this.posY + this.height/1.5), this.width/6, this.height/2);
+		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
+		StdDraw.filledRectangle(this.posX, (this.posY + this.size/1.5), this.size/6, this.size/2);
 	}
 	
 	/**
@@ -107,15 +106,15 @@ public class Player implements Moveable {
 	 * @return true if collision occurred
 	 */
 	public boolean collide(Alien a) {	
-		double myTopLeftX = posX - width/2;
-		double myTopLeftY = posY + height/2;
-		double myBottomRightX = posX + width/2;
-		double myBottomRightY = posY - height/2;
+		double myTopLeftX = posX - size/2;
+		double myTopLeftY = posY + size/2;
+		double myBottomRightX = posX + size/2;
+		double myBottomRightY = posY - size/2;
 		
-		double otherTopLeftX = a.getPosX() - a.getWidth()/2;
-		double otherTopLeftY = a.getPosY() + a.getHeight()/2;
-		double otherBottomRightX = a.getPosX() + a.getWidth()/2;
-		double otherBottomRightY = a.getPosY() - a.getHeight()/2;
+		double otherTopLeftX = a.getPosX() - a.getSize()/2;
+		double otherTopLeftY = a.getPosY() + a.getSize()/2;
+		double otherBottomRightX = a.getPosX() + a.getSize()/2;
+		double otherBottomRightY = a.getPosY() - a.getSize()/2;
 		
 		return (myTopLeftY >= otherBottomRightY && myBottomRightY <= otherTopLeftY && myBottomRightX >= otherTopLeftX && myTopLeftX <= otherBottomRightX);
 	}

@@ -6,8 +6,7 @@ public class Bullet implements Moveable{
 	
 	private double posX;
 	private double posY; 
-	private double width = 0.05;
-	private double height = 0.05;
+	private double size = 0.05;
 	private double speed;
 	private boolean isOffScreen = false;
 	
@@ -28,7 +27,7 @@ public class Bullet implements Moveable{
 	 */
 	public void draw() {
 		StdDraw.setPenColor(StdDraw.BLUE);
-		StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
+		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
 	}
 	
 	/**
@@ -55,6 +54,14 @@ public class Bullet implements Moveable{
 	}
 	
 	/**
+	 * 
+	 * @return size- size of bullet
+	 */
+	public double getSize() {
+		return this.size;
+	}
+	
+	/**
 	 * Determine if bullet is out of bounds
 	 */
 	public boolean getIsOffScreen() {
@@ -74,15 +81,15 @@ public class Bullet implements Moveable{
 	 * @return true if collision occurred
 	 */
 	public boolean collide(Alien a) {	
-		double myTopLeftX = posX - width/2;
-		double myTopLeftY = posY + height/2;
-		double myBottomRightX = posX + width/2;
-		double myBottomRightY = posY - height/2;
+		double myTopLeftX = posX - size/2;
+		double myTopLeftY = posY + size/2;
+		double myBottomRightX = posX + size/2;
+		double myBottomRightY = posY - size/2;
 		
-		double otherTopLeftX = a.getPosX() - a.getWidth()/2;
-		double otherTopLeftY = a.getPosY() + a.getHeight()/2;
-		double otherBottomRightX = a.getPosX() + a.getWidth()/2;
-		double otherBottomRightY = a.getPosY() - a.getHeight()/2;
+		double otherTopLeftX = a.getPosX() - a.getSize()/2;
+		double otherTopLeftY = a.getPosY() + a.getSize()/2;
+		double otherBottomRightX = a.getPosX() + a.getSize()/2;
+		double otherBottomRightY = a.getPosY() - a.getSize()/2;
 		
 		return (myTopLeftY >= otherBottomRightY && myBottomRightY <= otherTopLeftY && myBottomRightX >= otherTopLeftX && myTopLeftX <= otherBottomRightX);
 	}
