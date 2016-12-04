@@ -34,29 +34,6 @@ public class Player implements Moveable {
 	}
 	
 	/**
-	 * draw player
-	 */
-	public void draw() {
-		StdDraw.setPenColor(this.color);
-		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
-		StdDraw.filledRectangle(this.posX, (this.posY + this.size/1.5), this.size/6, this.size/2);
-	}
-	
-	/**
-	 * move player
-	 */
-	public void move() {
-		
-		//If movements are possible:
-		if ((ArcadeKeys.isKeyPressed(0, 1)) && (this.posX - this.speed > -1)) {
-			this.posX -= this.speed;
-		}
-		else if ((ArcadeKeys.isKeyPressed(0, 3)) && (this.posX + this.speed < 1)) {
-			this.posX += this.speed;
-		}
-	}
-	
-	/**
 	 * 
 	 * @return posX- x-coordinate of player (center)
 	 */
@@ -78,6 +55,29 @@ public class Player implements Moveable {
 	 */
 	public int getLives() {
 		return this.lives;
+	}
+	
+	/**
+	 * Draw player
+	 */
+	public void draw() {
+		StdDraw.setPenColor(this.color);
+		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
+		StdDraw.filledRectangle(this.posX, (this.posY + this.size/1.5), this.size/6, this.size/2);
+	}
+	
+	/**
+	 * Move player
+	 */
+	public void move() {
+		
+		//If movements are possible:
+		if ((ArcadeKeys.isKeyPressed(0, 1)) && (this.posX - this.speed > -1)) {
+			this.posX -= this.speed;
+		}
+		else if ((ArcadeKeys.isKeyPressed(0, 3)) && (this.posX + this.speed < 1)) {
+			this.posX += this.speed;
+		}
 	}
 	
 	/**

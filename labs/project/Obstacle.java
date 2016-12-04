@@ -22,21 +22,6 @@ public class Obstacle implements Moveable {
 	}
 	
 	/**
-	 * Draw obstacle
-	 */
-	public void draw() {
-		StdDraw.setPenColor(StdDraw.WHITE);
-		StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
-	}
-	
-	/**
-	 * We don't need to do anything here since obstacle doesn't move
-	 */
-	public void move() {
-		
-	}
-	
-	/**
 	 * 
 	 * @return posX- x-coordinate of obstacle (center)
 	 */
@@ -69,6 +54,21 @@ public class Obstacle implements Moveable {
 	}
 	
 	/**
+	 * Draw obstacle
+	 */
+	public void draw() {
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.filledRectangle(this.posX, this.posY, this.width/2, this.height/2);
+	}
+	
+	/**
+	 * Move obstacle (We don't need to do anything here since obstacle doesn't move)
+	 */
+	public void move() {
+		
+	}
+	
+	/**
 	 * Kills obstacle by shrinking width
 	 */
 	public void die() {
@@ -80,10 +80,15 @@ public class Obstacle implements Moveable {
 	 * Resets obstacle to its original width and hits
 	 */
 	public void reset() {
-		this.width = 0.61;
+		this.width = .61;
 		this.hits = 0;
 	}
 	
+	/**
+	 * Determine if the obstacle and bullet collide based on comparing upper left and bottom right coordinates of each
+	 * @param b- bullet that obstacle potentially collided with
+	 * @return true if collision occurred
+	 */
 	public boolean collide(Bullet b) {
 		double myTopLeftX = posX - width/2;
 		double myTopLeftY = posY + height/2;

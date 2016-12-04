@@ -65,7 +65,7 @@ public class Alien implements Moveable {
 	}
 	
 	/**
-	 * draw alien
+	 * Draw alien
 	 */
 	public void draw() {
 		StdDraw.setPenColor(StdDraw.WHITE);
@@ -74,7 +74,7 @@ public class Alien implements Moveable {
 	}
 	
 	/**
-	 * move alien
+	 * Move alien
 	 */
 	public void move() {
 		if (isOffScreen()) {
@@ -97,7 +97,7 @@ public class Alien implements Moveable {
 	}
 	
 	/**
-	 * move alien to start position
+	 * Move alien to start position
 	 */
 	public void moveToStart() {
 		this.posX = startX;
@@ -113,7 +113,7 @@ public class Alien implements Moveable {
 	}
 	
 	/**
-	 * make alien die
+	 * Kills alien
 	 */
 	public void die() {
 		this.isAlive = false;

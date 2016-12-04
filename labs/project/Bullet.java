@@ -23,21 +23,6 @@ public class Bullet implements Moveable{
 	}
 	
 	/**
-	 * draw bullet
-	 */
-	public void draw() {
-		StdDraw.setPenColor(StdDraw.BLUE);
-		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
-	}
-	
-	/**
-	 * move bullet
-	 */
-	public void move() {
-		this.posY += speed;
-	}
-	
-	/**
 	 * 
 	 * @return posX- x-coordinate of bullet (center)
 	 */
@@ -69,10 +54,25 @@ public class Bullet implements Moveable{
 	}
 	
 	/**
-	 * Remove bullet if off screen or collides with alien
+	 * Make the bullet off-screen
 	 */
 	public void setOffScreen() {
 		this.isOffScreen = true;
+	}
+	
+	/**
+	 * Draw bullet
+	 */
+	public void draw() {
+		StdDraw.setPenColor(StdDraw.BLUE);
+		StdDraw.filledSquare(this.posX, this.posY, this.size/2);
+	}
+	
+	/**
+	 * Move bullet
+	 */
+	public void move() {
+		this.posY += speed;
 	}
 	
 	/**
