@@ -77,7 +77,7 @@ public class Game {
 			bullets.add(b1);
 		}
 		
-		// Code for collision between player-alien and alien-bullet + bullet going out of the board
+		// Code for collision between player-alien & alien-bullet
 		/*CODE A*/ // start
 		for (Alien a : aliens) {
 			if (player.collide(a)) {
