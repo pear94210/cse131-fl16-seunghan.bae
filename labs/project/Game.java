@@ -176,7 +176,7 @@ public class Game {
 	}
 	
 	/**
-	 * Draw the 'game over' screen with score shown
+	 * Draw 'GAME OVER' screen with score shown
 	 */
 	public void drawGameEnd()
 	{
