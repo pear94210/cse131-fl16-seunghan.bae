@@ -11,7 +11,7 @@ public class Bullet implements Moveable{
 	private boolean isOffScreen = false;
 	
 	/**
-	 * Creates a Bullet object to be implemented in the game
+	 * Create a Bullet object to be implemented in the game
 	 * @param x- x-coordinate of bullet (center)
 	 * @param y- y-coordinate of bullet (center)
 	 * @param speed- speed at which the bullet moves 

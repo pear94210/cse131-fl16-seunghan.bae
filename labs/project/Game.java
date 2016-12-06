@@ -22,6 +22,9 @@ public class Game {
 	private double alienSpeed;
 	private int score;
 	
+	/**
+	 * Create a Space Invader game
+	 */
 	public Game() {
 		aliens = new LinkedList<Alien>();
 		move = new LinkedList<Moveable>();
@@ -36,6 +39,10 @@ public class Game {
 		score = 0;
 	}
 	
+	/**
+	 * Draw game background
+	 * @param score- player's score
+	 */
 	public void drawBoard(int score) {
 		StdDraw.clear();
 		StdDraw.setPenColor(StdDraw.BLACK);
@@ -44,10 +51,17 @@ public class Game {
 		StdDraw.text(.75, .9, "Score: " + score);
 	}
 	
+	/**
+	 * 
+	 * @return true if player's life becomes zero (game is over)
+	 */
 	public boolean isOver() {
 		return (!(player.getLives() > 0));
 	}
 	
+	/**
+	 * Add three aliens + a mothership (using addAlien)
+	 */
 	public void addAliens(){
 		addAlien(.5, .5, alienSpeed, true, false);
 		addAlien(-.5, .5, alienSpeed, true, false);
@@ -55,6 +69,14 @@ public class Game {
 		addAlien(-.9, .75, 2 * alienSpeed, false, true);
 	}
 	
+	/**
+	 * Add alien to 'aliens' and 'move' list
+	 * @param x- x-coordinate of alien (center)
+	 * @param y- y-coordinate of alien (center)
+	 * @param speed- speed at which the alien moves 
+	 * @param upDown- true if alien moves up/down pattern; false if alien moves side-to-side pattern
+	 * @param mothership- true if mothership; false if normal alien
+	 */
 	private void addAlien(double x, double y, double speed, boolean upDown, boolean mothership)
 	{
 		Alien a = new Alien(x, y, speed, upDown, mothership);
@@ -62,6 +84,9 @@ public class Game {
 		move.add(a);
 	}
 	
+	/**
+	 * run game
+	 */
 	public void play(){
 		// Draw game board with score shown + draw player & aliens and make them move
 		drawBoard(score);
@@ -138,6 +163,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Level up the stage when all aliens are killed + reset aliens & obstacle
+	 */
 	public void levelUp() {
 		if (aliens.isEmpty()) {
 			alienSpeed *= 1.5;
@@ -147,6 +175,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Draw the 'game over' screen with score shown
+	 */
 	public void drawGameEnd()
 	{
 		StdDraw.clear();

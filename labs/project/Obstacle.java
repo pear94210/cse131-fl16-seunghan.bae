@@ -11,7 +11,7 @@ public class Obstacle implements Moveable {
 	private int hits;
 	
 	/**
-	 * Creates an Obstacle object to be implemented in the game
+	 * Create an Obstacle object to be implemented in the game
 	 */
 	public Obstacle() {
 		this.posX = 0;
@@ -69,7 +69,7 @@ public class Obstacle implements Moveable {
 	}
 	
 	/**
-	 * Kills obstacle by shrinking width
+	 * Kill obstacle by shrinking width
 	 */
 	public void die() {
 		this.hits++;
@@ -77,7 +77,7 @@ public class Obstacle implements Moveable {
 	}
 	
 	/**
-	 * Resets obstacle to its original width and hits
+	 * Reset obstacle to its original width and hits
 	 */
 	public void reset() {
 		this.width = .61;

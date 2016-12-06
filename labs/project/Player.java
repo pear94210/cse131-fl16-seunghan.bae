@@ -17,7 +17,7 @@ public class Player implements Moveable {
 	private final Color [] colors = {StdDraw.RED, StdDraw.YELLOW, StdDraw.WHITE};
 	
 	/**
-	 * Creates a Player object to be implemented in the game
+	 * Create a Player object to be implemented in the game
 	 * @param x- x-coordinate of player (center)
 	 * @param y- y-coordinate of player (center)
 	 * @param speed- speed at which the player moves 
@@ -89,7 +89,7 @@ public class Player implements Moveable {
 	}
 	
 	/**
-	 * Kills player by reducing life and changing colors
+	 * Kill player by reducing life and changing colors
 	 */
 	public void die() {
 		this.lives--;

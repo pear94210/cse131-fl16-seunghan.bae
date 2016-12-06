@@ -15,7 +15,7 @@ public class Alien implements Moveable {
 	private boolean mothership;
 	
 	/**
-	 * Creates an Alien object to be implemented in the game
+	 * Create an Alien object to be implemented in the game
 	 * @param x- x-coordinate of alien (center)
 	 * @param y- y-coordinate of alien (center)
 	 * @param speed- speed at which the alien moves 
@@ -113,7 +113,7 @@ public class Alien implements Moveable {
 	}
 	
 	/**
-	 * Kills alien
+	 * Kill alien
 	 */
 	public void die() {
 		this.isAlive = false;
